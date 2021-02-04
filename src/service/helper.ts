@@ -1,5 +1,4 @@
 import {Response} from "express";
-import {MessageResolver} from "js-express-server";
 
 export function send(res: Response, payload: any) {
     if (process.env.NODE_ENV == 'development') {
@@ -15,7 +14,6 @@ export function send(res: Response, payload: any) {
 export function sendErrorResponse(res: Response, code: number, messageId: string) {
     res.status(code);
     res.send({
-        message: messageId,
-        messageLocaled: MessageResolver.resolve(messageId)
+        message: messageId
     });
 }

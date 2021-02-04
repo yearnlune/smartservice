@@ -1,15 +1,22 @@
-import * as JsExpressServer from 'js-express-server'
+import express from 'express';
 import routes from './routes'
+import * as healthChecker from "nodepress-healthchecker";
 
-const settings = JsExpressServer.defaultSettings();
-settings.host = process.env.HOST || 'smartservice';
-settings.apiOriginPath = '/hdd-smart/analyse';
-settings.port = parseInt(process.env.PORT || '8080');
+const apiOriginPath = '/hdd-smart/analyse/';
 
-const server = JsExpressServer.createServer(settings);
-server.applyRoutes(routes);
+/* EXPRESS SERVER INITIALIZATION */
+const app = express();
 
-server.start();
+/* ADD ROUTES */
+app.use(apiOriginPath, routes);
+
+app.listen({
+    host: process.env.HOST || '127.0.0.1',
+    port: parseInt(process.env.PORT || '8080'),
+    backlog: parseInt(process.env.BACKLOG || '128')
+});
+
+healthChecker.init();
 
 // Content-Type: application/json
 //

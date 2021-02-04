@@ -13,6 +13,6 @@ export interface Smart {
 export interface SmartHelper {
     vendorId: string;
     smartList: Smart[];
-    diskLifeIdList?: number[];
-    isRawValues8?: boolean;
+    diskLifeIdList: number[];
+    isRawValues8: boolean;
 }
