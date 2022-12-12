@@ -13,7 +13,7 @@
   "author": "DONGHWAN KIM",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mysql": "^2.18.1",
     "nodepress-healthchecker": "^1.0.8"
   },
